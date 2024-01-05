@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.card {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+}
+
+.icon {
+    cursor: pointer;
+}
+.place {
+    font-size: 14px;
+}
+.descr {
+    font-size: 14px;
+}
+.star {
+    color: goldenrod;
+}
+
+.info {
+    display: flex;
+    color: grey;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.delete_pin {
+    font-weight: 600;
+    color: red;
+    border: 1px solid darkgreen;
+}
+
+.input_details_container{
+    width: 250px;
+    height: 250px;
+    /* border: 1px solid green; */
+}
+
+.input_details_container form {
+    /* border: 2px solid brown; */
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.input_details_container input {
+    height: 10%;
+    color: black;
+    /* background-color: '#f0f0f0'; */
+}
+
+form{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; 
+    /* border: 2px solid brown; */
+}
+
+.input_details_container textarea{
+    height: 50px;
+}
+
+label {
+    font-size: 13px;
+    color: blue;
+    border-bottom: 1.5px solid darkblue;
+    margin: 3px 0;
+}
+
+form label{
+    /* border: 1px solid black; */
+    font-size: 15px;
+}
+
+input,textarea{
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+}
+input::placeholder,textarea::placeholder{
+    font-size: 15px;
+    background-color: lightgray;
+    color: black;
+}
+.submitButton{
+    border: none;
+    padding: 10px, 5px, 10px, 5px;
+    border-radius: 0;
+    color: white;
+    background-color: rgb(253, 123, 100);
+    margin-left: 25%;
+    width: 50%;
+    height: 20px;
+}
+.submitButton:hover{
+    background-color: tomato;
+    cursor: pointer;
+}
+.footer{
+    position: absolute;
+    display: flex;
+    padding: 10px;
+    flex-direction: row;
+    height: auto;
+    width: 100vw;
+    background-color: rgb(16, 29, 49);
+    z-index: 100;
+    bottom: 0;
+    justify-content: center;
+}
+
+.footer:hover {
+    cursor: pointer;
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.1) -6px -2px 16px 0px;
+}
+
+.button{
+    border: none;
+    padding: 5px;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+    margin-right: 15px;
+    font-weight: 800;
+}
+.logout{
+    background-color: tomato;
+}
+.login{
+    background-color: teal;
+}
+
+.register{
+    background-color: blue;
+}
+
+.register:hover{
+    background-color: darkblue;
+}
+
+.login:hover{
+    background-color: rgb(0, 76, 76);
+}
+.logout:hover{
+    background-color: rgb(255, 68, 35);
+}
+
+
