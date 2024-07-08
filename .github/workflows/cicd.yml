@@ -74,4 +74,3 @@ jobs:
 
       - name: Run Docker container
         run: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock docdevan/pinpoint:latest
-
