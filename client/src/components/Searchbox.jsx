@@ -78,7 +78,7 @@ const SearchBox = ({ mapRef }) => {
               <input
                 type="text"
                 value={searchQuery}
-                placeholder="Search here"
+                placeholder="Search"
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onClick={() => setSuggestionFlag(true)}
               />
