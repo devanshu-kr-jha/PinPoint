@@ -56,27 +56,27 @@ jobs:
           push: true
           tags: docdevan/pinpoint:backend
 
-  update-latest:
-    needs: [build-client, build-server]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+  # update-latest:
+  #   needs: [build-client, build-server]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+  #     - name: Set up Docker Buildx
+  #       uses: docker/setup-buildx-action@v2
 
-      - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+  #     - name: Log in to Docker Hub
+  #       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
-      - name: Build single docker image
-        run: docker build -t docdevan/pinpoint:latest .
+  #     - name: Build single docker image
+  #       run: docker build -t docdevan/pinpoint:latest .
 
-      - name: Publish image to docker hub
-        run: docker push docdevan/pinpoint:latest
+  #     - name: Publish image to docker hub
+  #       run: docker push docdevan/pinpoint:latest
 
   deploy:
-    needs: [update-latest]
+    needs: [build-client, build-server]
     runs-on: self-hosted
 
     steps:
@@ -85,10 +85,10 @@ jobs:
           docker stop $(docker ps -a -q) || true
           docker rm $(docker ps -a -q) || true
 
-      - name: Pull image from Docker Hub
-        run: docker pull docdevan/pinpoint:latest
+      # - name: Pull image from Docker Hub
+      #   run: docker pull docdevan/pinpoint:latest
 
       - name: Run Docker container
-        run: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock docdevan/pinpoint:latest
+        run: docker-compose up -d --build
 
 
