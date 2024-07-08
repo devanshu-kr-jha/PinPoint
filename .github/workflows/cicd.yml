@@ -80,14 +80,15 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Pull image from Docker Hub
-        run: docker pull docdevan/pinpoint:latest
-
       - name: Stop and remove all containers
         run: |
           docker stop $(docker ps -a -q) || true
           docker rm $(docker ps -a -q) || true
 
+      - name: Pull image from Docker Hub
+        run: docker pull docdevan/pinpoint:latest
+
       - name: Run Docker container
         run: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock docdevan/pinpoint:latest
+
 
