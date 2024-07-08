@@ -58,7 +58,7 @@ jobs:
 
   deploy:
     needs: [build-client, build-server]
-    runs-on: [aws-ec2]
+    runs-on: self-hosted
 
     steps:
       - name: Pull image from Docker Hub
