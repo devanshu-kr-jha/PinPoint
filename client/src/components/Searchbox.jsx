@@ -88,7 +88,7 @@ const SearchBox = ({ mapRef }) => {
         {dataFlag && suggestionFlag && (
           <div className="d1">
             <div className="d2">
-              {apiData.map((d) => (
+              {Array.isArray(apiData) && apiData.map((d) => (
                 <p key={d._id} onClick={() => handleSearchText(d.place_name)}>
                   {d.place_name}
                 </p>

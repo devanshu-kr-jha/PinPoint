@@ -158,7 +158,7 @@ const MapInterface = () => {
 
         {
           /* Mark pins on the Map by iterating over pins[] */
-          pins.map((p) => (
+          Array.isArray(pins) && pins.map((p) => (
             <>
               <Marker
                 key={p._id}

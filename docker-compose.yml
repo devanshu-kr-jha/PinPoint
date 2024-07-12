@@ -1,22 +1,20 @@
 version: "3.9"
 services:
   react-frontend:
-    # build:
-    #   context: ./client
-    image: docdevan/pinpoint:frontend
+    build:
+      context: ./client
     container_name: react-frontend
     stdin_open: true
     ports:
-      - "5173:5173"
+      - "80:80"
     networks:
       - point-net
     depends_on:
       - express-backend
 
   express-backend:
-    # build:
-    #   context: ./server
-    image: docdevan/pinpoint:backend
+    build:
+      context: ./server
     container_name: express-backend
     ports:
       - "5000:5000"
@@ -35,6 +33,7 @@ services:
       - "8001:8001"
     networks:
       - point-net
+
 networks:
   point-net:
     driver: bridge
