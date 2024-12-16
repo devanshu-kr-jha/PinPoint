@@ -1,3 +1,6 @@
+/**
+ * Import necessary components and libraries
+ */
 import Map, {
   NavigationControl,
   GeolocateControl,
@@ -22,6 +25,9 @@ import StarIcon from "@mui/icons-material/Star";
 import Switch from "@mui/material/Switch";
 import axios from "axios";
 
+/**
+ * Define toast notification functions
+ */
 const pinAddSuccess = () => {
   toast.success("Added Pin!");
 };
@@ -42,11 +48,20 @@ const pinDelSuccess = () => {
   toast.success("Successfully deleted pin");
 };
 
+/**
+ * Define the MapInterface component
+ */
 const MapInterface = () => {
+  /**
+   * Get the current view state and dispatch function from Redux
+   */
   const viewState = useSelector((state) => state.viewState);
   const dispatch = useDispatch();
   const mapRef = useRef();
 
+  /**
+   * Initialize state variables
+   */
   const [pins, setPins] = useState([]);
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
@@ -58,10 +73,16 @@ const MapInterface = () => {
   const [showRegister, setShowRegister] = useState(false);
   const [satStyle, setSatStyle] = useState(false);
 
+  /**
+   * Get all pins from the database on initial render
+   */
   useEffect(() => {
     getPins();
-  }, []); // will get all pins from the database on first initial render
+  }, []);
 
+  /**
+   * Function to get all pins from the database
+   */
   const getPins = async () => {
     try {
       const response = await axios.get("/api/pins", {withCredentials: true});
@@ -72,10 +93,16 @@ const MapInterface = () => {
     }
   };
 
+  /**
+   * Function to handle marker click
+   */
   const handleMarkerClicked = (id) => {
     setCurrentPlaceId(id);
   };
 
+  /**
+   * Function to handle add click
+   */
   const handleAddClick = (e) => {
     setNewPlace({
       lng: e.lngLat.lng,
@@ -83,6 +110,9 @@ const MapInterface = () => {
     });
   };
 
+  /**
+   * Function to handle pin submission
+   */
   const handlePinsubmit = async (e) => {
     e.preventDefault();
 
@@ -110,6 +140,9 @@ const MapInterface = () => {
     }
   };
 
+  /**
+   * Function to handle logout
+   */
   const handleLogout = async () => {
     await axios.get("/api/logout");
 
@@ -117,10 +150,16 @@ const MapInterface = () => {
     setCurrentUser(null);
   };
 
+  /**
+   * Function to handle map move
+   */
   const onMove = useCallback((evt) => {
     dispatch(setViewState(evt.viewState));
   });
 
+  /**
+   * Function to handle pin deletion
+   */
   const handleDropPin = async (pid) => {
     const pin_id = pid;
     try {
